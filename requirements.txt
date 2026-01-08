@@ -1,0 +1,38 @@
+# Template Automation System - Dependencies
+
+# Core
+python >= 3.10
+requests >= 2.31.0
+python-dotenv >= 1.0.0
+loguru >= 0.7.0
+pyyaml >= 6.0.0
+python-dateutil >= 2.8.0
+
+# AI APIs
+openai >= 1.0.0
+anthropic >= 0.3.0
+google-auth >= 2.0.0
+google-auth-oauthlib >= 1.0.0
+google-api-python-client >= 2.0.0
+
+# Database
+supabase >= 1.0.0
+
+# Image Processing
+Pillow >= 10.0.0
+imagehash >= 4.3.0
+
+# PDF Generation
+reportlab >= 4.0.0
+jinja2 >= 3.1.0
+
+# Scheduling
+apscheduler >= 3.10.0
+
+# Testing
+pytest >= 7.4.0
+pytest-asyncio >= 0.21.0
+
+# Optional - for advanced features
+# stripe >= 7.0.0  # 암호화페 결제 (나중에 설치)
+# web3 >= 6.0.0    # 블록체인 (나중에 설치)

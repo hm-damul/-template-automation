@@ -1,0 +1,42 @@
+{
+  "name": "template-automation-system",
+  "version": "1.0.0",
+  "description": "완전 자율형 템플릿 제작 및 배포 자동화 시스템",
+  "main": "src/main.py",
+  "scripts": {
+    "start": "python src/main.py",
+    "dev": "python -m uvicorn src.api.server:app --reload",
+    "test": "pytest tests/ -v",
+    "workflows:sync": "python n8n/sync_workflows.py",
+    "monitor": "python src/monitoring/monitor.py",
+    "report:daily": "python src/monitoring/reports.py --daily",
+    "report:weekly": "python src/monitoring/reports.py --weekly"
+  },
+  "dependencies": {
+    "python": ">=3.10",
+    "openai": ">=1.0.0",
+    "anthropic": ">=0.3.0",
+    "requests": ">=2.31.0",
+    "python-dotenv": ">=1.0.0",
+    "supabase": ">=1.0.0",
+    "google-auth": ">=2.0.0",
+    "google-auth-oauthlib": ">=1.0.0",
+    "google-api-python-client": ">=2.0.0",
+    "imagehash": ">=4.3.0",
+    "Pillow": ">=10.0.0",
+    "reportlab": ">=4.0.0",
+    "jinja2": ">=3.1.0",
+    "python-dateutil": ">=2.8.0",
+    "apscheduler": ">=3.10.0",
+    "loguru": ">=0.7.0",
+    "pyyaml": ">=6.0.0",
+    "cryptography": ">=41.0.0",
+    "web3": ">=6.0.0"
+  },
+  "dev_dependencies": {
+    "pytest": ">=7.4.0",
+    "pytest-asyncio": ">=0.21.0",
+    "black": ">=23.0.0",
+    "mypy": ">=1.5.0"
+  }
+}
