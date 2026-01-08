@@ -18,19 +18,25 @@ from typing import Dict, Optional
 import requests
 
 # 경로 설정
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from dotenv import load_dotenv
 load_dotenv(PROJECT_ROOT / ".env")
 
+# logs 및 reports 폴더 생성
+logs_dir = PROJECT_ROOT / "logs"
+reports_dir = PROJECT_ROOT / "reports"
+logs_dir.mkdir(exist_ok=True)
+reports_dir.mkdir(exist_ok=True)
+
 # 로깅 설정
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(PROJECT_ROOT / "logs" / "daemon.log"),
+        logging.FileHandler(logs_dir / "daemon.log"),
         logging.StreamHandler()
     ]
 )
@@ -199,7 +205,7 @@ class ProductionDaemon:
                 logger.info(f"📦 Running automation cycle (attempt {attempt}/{self.max_retries})")
                 
                 # 메인 오케스트레이터 실행
-                from src.main import TemplateAutomationOrchestrator
+                from main import TemplateAutomationOrchestrator
                 
                 orchestrator = TemplateAutomationOrchestrator()
                 results = orchestrator.run_full_cycle()
@@ -291,7 +297,7 @@ def main():
         
     elif args.run_once:
         # 한 번만 실행
-        from src.main import TemplateAutomationOrchestrator
+        from main import TemplateAutomationOrchestrator
         orchestrator = TemplateAutomationOrchestrator()
         results = orchestrator.run_full_cycle()
         print(json.dumps(results, indent=2))
